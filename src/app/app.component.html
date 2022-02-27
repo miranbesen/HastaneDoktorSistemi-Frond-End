@@ -1,0 +1,92 @@
+<!-- <div class="container">
+    
+    <h3 class="d-flex justify-content-center">Angular 10,Web API,SQL Server App Demo</h3>
+    <h5 class="d-flex justify-content-center">Hastane Management Portal</h5>
+    
+    <nav class="navbar navbar-expand-sm bg-light navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <button routerLink="hastane"
+                class="m-1 btn btn-light btn-outline-primary" Button>Hastane</button>
+            </li>
+            <li class="nav-item">
+                <button routerLink="doktor"
+                class="m-1 btn btn-light btn-outline-primary" Button>Doktor</button>
+            </li>
+
+        </ul>
+    </nav>
+    
+    <router-outlet></router-outlet>
+     
+</div> -->
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+
+
+  <!-- <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" >
+              <span aria-hidden="true">&times;</span>
+          </button>
+        
+        </div>
+        
+        <div class="modal-body">
+          
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"  id="exampleModalLabel">Doktor İşlem</h5>
+          <button type="button"  aria-label="Close"  data-bs-toggle="modal" data-bs-target="#exampleModal"   (click)="closeClick()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <app-add-edit-dok [doktor]="dok"  *ngIf="ActivateAddEditDokComp"></app-add-edit-dok> 
+        </div>
+      </div>
+    </div>
+  </div>   -->
+
+
+  <!-- <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Hastane İşlem</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-add-edit-has [has]="has" *ngIf="ActivateAddEditHasComp"></app-add-edit-has> 
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  

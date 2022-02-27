@@ -1,0 +1,80 @@
+
+
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        
+        </div>
+        
+        <div class="modal-body">
+          <app-add-edit-has [has]="has" *ngIf="ActivateAddEditHasComp"></app-add-edit-has> 
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <jw-modal id="custom-modal-1">
+    <div class="modal-header">
+      <h1 class="modal-title" id="exampleModalLabel">Hastane İşlem</h1>
+      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-add-edit-has [has]="has" *ngIf="ActivateAddEditHasComp"></app-add-edit-has> 
+    </div>
+</jw-modal>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="HastaneIdFilter" class="form-control"
+                (keyup)="FilterFn()" placeholder="Ara">
+             
+              <my-button (onClick)="sortResult('id',true)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textDown" ></my-button> 
+              <my-button (onClick)="sortResult('id',false)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textUp" ></my-button> 
+              </div>    
+              Hastane_Id</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="HastaneNameFilter" class="form-control"
+                (keyup)="FilterFn()" placeholder="Ara">
+                 <my-button (onClick)="sortResult('adi',true)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textDown" ></my-button> 
+                <my-button (onClick)="sortResult('adi',false)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textUp" ></my-button>   
+              </div>  
+              Hastane Adı</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of HastaneList">
+            <td>{{dataItem.id}}</td>
+            <td>{{dataItem.adi}}</td>
+            <td>
+                <my-button (onClick)="editClick(dataItem)" data-bs-toggle="modal" data-bs-target="#exampleModal"   [class]="attributeUpdateButton.class" [type]="attributeUpdateButton.type" [text]="attributeUpdateButton.text" ></my-button> 
+                <my-button (onClick)="deleteClick(dataItem)" [class]="attributeDeleteButton.class" [type]="attributeDeleteButton.type" [text]="attributeDeleteButton.text" ></my-button> 
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Button trigger modal -->
+
+
+
+<button style="float:right;" type="button" class="btn btn-danger m-2"  
+(click)="addClick()">
+Hastane Ekle
+</button>
+
+
+  

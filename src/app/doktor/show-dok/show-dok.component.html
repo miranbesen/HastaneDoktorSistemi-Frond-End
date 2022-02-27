@@ -1,0 +1,95 @@
+
+
+
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"  id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button"  aria-label="Close"  data-bs-toggle="modal" data-bs-target="#exampleModal"   (click)="closeClick()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <app-add-edit-dok [doktor]="dok"  *ngIf="ActivateAddEditDokComp"></app-add-edit-dok> 
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!-- <my-modal  (onClick)="closeClick()" [ModalTitle]="" [appOpen]="attributeModal.appOpen" [appClose]="attributeModal.appClose"  [inputval]="attributeModal.inputval" [outputval]="attributeModal.outputval" [ActivateAddEditComp]="ActivateAddEditDokComp"></my-modal> -->
+
+<jw-modal id="custom-modal-1">
+  <div class="modal-header">
+    <h1 class="modal-title" id="exampleModalLabel">Doktor İşlem</h1>
+    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-add-edit-dok [doktor]="dok"  *ngIf="ActivateAddEditDokComp"></app-add-edit-dok> 
+  </div>
+</jw-modal>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="DoktorIdFilter" class="form-control"
+                (keyup)="FilterFn()" placeholder="Ara">
+              <my-button (onClick)="sortResult('id',true)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textDown" ></my-button> 
+              <my-button (onClick)="sortResult('id',false)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textUp" ></my-button> 
+            </div>     
+              Doktor_Id</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="DoktorNameFilter" class="form-control"
+                (keyup)="FilterFn()" placeholder="Ara">
+                <my-button (onClick)="sortResult('adi',true)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textDown" ></my-button> 
+                <my-button (onClick)="sortResult('adi',false)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textUp" ></my-button> 
+              </div>    
+              Doktor Adı</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="DoktorSoyadFilter" class="form-control"
+                (keyup)="FilterFn()" placeholder="Ara">
+                <my-button (onClick)="sortResult('soyadi',true)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textDown" ></my-button> 
+                <my-button (onClick)="sortResult('soyadi',false)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textUp" ></my-button> 
+              </div>   
+              Doktor Soyadı</th>
+            <th>
+              <div class="d-flex flex-row">
+                <input [(ngModel)]="DoktorUzmanligiFilter" class="form-control"
+                (keyup)="FilterFn()" placeholder="Ara">
+                <my-button (onClick)="sortResult('uzmanligi',true)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textDown" ></my-button> 
+                <my-button (onClick)="sortResult('uzmanligi',false)"   [class]="attributeSortResultButton.class" [text]="attributeSortResultButton.textUp" ></my-button> 
+              </div>   
+              Uzmanligi</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of DoktorList">
+            <td>{{dataItem.id}}</td>
+            <td>{{dataItem.adi}}</td>
+            <td>{{dataItem.soyadi}}</td>
+            <td>{{dataItem.uzmanligi}}</td>
+            <td>
+              <my-button (onClick)="editClick(dataItem)" data-bs-toggle="modal" data-bs-target="#exampleModal"   [class]="attributeUpdateButton.class" [type]="attributeUpdateButton.type" [text]="attributeUpdateButton.text" ></my-button> 
+              <my-button (onClick)="deleteClick(dataItem)" [class]="attributeDeleteButton.class" [type]="attributeDeleteButton.type" [text]="attributeDeleteButton.text" ></my-button> 
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- <button style="float:right;" type="button" class="btn btn-danger m-2"  
+data-bs-toggle="modal" data-bs-target="#exampleModal" 
+(click)="addClick()" data-backdrop="static" data-keyboard="false">Doktor Ekle</button>  -->
+
+<button style="float:right;" type="button" class="btn btn-danger m-2"  
+(click)="addClick()">
+Doktor Ekle
+</button>
